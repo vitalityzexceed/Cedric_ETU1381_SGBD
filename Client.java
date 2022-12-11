@@ -1,4 +1,4 @@
-package sgbd;
+package modele;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Elementsdetyraitements.Checkeur;
+import traitement.Checkeur;
 
 public class Client extends JFrame implements ActionListener{
 	int id;
@@ -65,7 +65,7 @@ public class Client extends JFrame implements ActionListener{
 		
 		
 		panelambany.add(textfield);
-		//panelambany.add(anatiny);
+		panelambany.add(anatiny);
 		anatiny.setBounds(50,120,300,300);
 		textfield.setBounds(50,60,700,80);
 		textfield.setFont(new Font("Consolas", Font.BOLD, 16));
@@ -96,8 +96,8 @@ public class Client extends JFrame implements ActionListener{
 
         BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
 
-        ImageIO.write(image, "png", new File("D://sgbd/fond.png"));
-       fen.jlab.setIcon(new ImageIcon("D://sgdb/fond.png"));
+        ImageIO.write(image, "jpg", new File("D://sgbd/fond.jpg"));
+       fen.jlab.setIcon(new ImageIcon("D://sgdb/fond.jpg"));
 		
 		BufferedReader in=new BufferedReader(new InputStreamReader(s.getInputStream()));
 		PrintWriter out=new PrintWriter(s.getOutputStream());
@@ -142,7 +142,7 @@ public class Client extends JFrame implements ActionListener{
 		});
 		recevoir.start();
 	} catch (Exception e) {
-		// TODO: handle exception
+		e.printStackTrace();
 	}
 	
 		

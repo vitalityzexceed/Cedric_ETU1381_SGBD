@@ -1,4 +1,4 @@
-package Elementsdetyraitements;
+package traitement;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -416,6 +416,7 @@ public class Database {
 				rehefatab2d[i]=rehefatab[i].split("=");
 			}
 			for (int i = 0; i < donneeshovainatab.length; i++) {
+				System.out.println("Donnees hovaina : " + donneeshovainatab[i]);
 				settab2d[i]=donneeshovainatab[i].split("=");
 			}
 			BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(chemin+nomdebaseactuel+"\\"+nomdetable+"build.txt"),"UTF-8"));
@@ -498,7 +499,8 @@ public class Database {
 				bfwr.newLine();
 				finalst=finalst+"<br>";
 			}
-			System.out.println(finalst);
+			//System.out.println(finalst);
+			System.out.println("Update success");
 			bfwr.close();
 			write.close();
 			

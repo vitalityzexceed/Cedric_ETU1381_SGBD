@@ -1,4 +1,4 @@
-package Elementsdetyraitements;
+package traitement;
 
 import java.io.IOException;
 

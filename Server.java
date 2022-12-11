@@ -1,4 +1,4 @@
-package sgbd;
+package modele;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,7 +21,7 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-import Elementsdetyraitements.Checkeur;
+import traitement.Checkeur;
 
 public class Server {
 	
@@ -46,9 +46,9 @@ public class Server {
 					
 					try {
 						OutputStream outputStream = s.getOutputStream();
-						BufferedImage image = ImageIO.read(new File("D://sgbd/fond.png"));
+						BufferedImage image = ImageIO.read(new File("D://sgbd/fond.jpg"));
 						ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-				        ImageIO.write(image, "png", byteArrayOutputStream);
+				        ImageIO.write(image, "jpg", byteArrayOutputStream);
 
 				        byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
 				        outputStream.write(size);
