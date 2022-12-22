@@ -35,9 +35,9 @@ public class Server {
 		try {
 			ss=new ServerSocket(1234);
 			s=ss.accept();
-			System.out.println("Un utilisateur s'est connecte");
 			in=new BufferedReader(new InputStreamReader(s.getInputStream()));
 			out=new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+			System.out.println("Un utilisateur s'est connecte");
 			Thread recevoir=new Thread(new Runnable() {
 				String msg;
 				
@@ -46,14 +46,15 @@ public class Server {
 					
 					try {
 						OutputStream outputStream = s.getOutputStream();
-						BufferedImage image = ImageIO.read(new File("D://sgbd/fond.jpg"));
+						///BufferedImage image = ImageIO.read(new File("D://sgbd/fond.jpg"));
 						ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-				        ImageIO.write(image, "jpg", byteArrayOutputStream);
+				        ///ImageIO.write(image, "jpg", byteArrayOutputStream);
 
 				        byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
-				        outputStream.write(size);
-				        outputStream.write(byteArrayOutputStream.toByteArray());
-				        outputStream.flush();
+						// test 3 telo reto
+				        // outputStream.write(size);
+				        // outputStream.write(byteArrayOutputStream.toByteArray());
+				        // outputStream.flush();
 						
 						
 						
@@ -67,6 +68,7 @@ public class Server {
 							
 						}
 						in.close();
+						//out.close();
 						s.close();
 						ss.close();
 						

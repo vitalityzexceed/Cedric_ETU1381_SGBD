@@ -39,10 +39,10 @@ public class Checkeur {
 					System.out.println(insertvoazara[k]);
 				}
 				Database.createinsert(insertvoazara);
-				return "Voambotra ny tablenao ";
+				return "Creation de table reussie ";
 			}else {
 				Database.createinsertstring(insertrehetra);
-				return "Voamboatra ny tablenao";
+				return "Creation de table reussie";
 			}
 			
 		}
@@ -55,7 +55,7 @@ public class Checkeur {
 			System.out.println(nomdatable);
 			
 			Database.usedatabase(nomdatable);
-			return "Tafiditra tsara ao am'ilay database "+nomdatable+" enao";
+			return "Vous etes entree dans la base "+nomdatable+" ";
 		}
 		if (a.toLowerCase().contains("insert")) {
 			System.out.println("okey");
@@ -71,7 +71,7 @@ public class Checkeur {
 		if (a.toLowerCase().contains("fafao")) {
 			return Database.manaodelete(a);
 		}
-		return "Misy diso ny fanoratanao anazy";
+		return "Erreur de syntaxe";
 		
 
 	}

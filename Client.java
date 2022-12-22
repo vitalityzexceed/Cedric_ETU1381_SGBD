@@ -60,7 +60,7 @@ public class Client extends JFrame implements ActionListener{
 		panelambany.add(indicedeconnexion); 
 		indicedeconnexion.setBounds(25,20,800,600);
 		indicedeconnexion.setVisible(true);
-		indicedeconnexion.setFont(new Font("Ink Free",Font.BOLD,22));
+		indicedeconnexion.setFont(new Font("Arial",Font.BOLD,22));
 		indicedeconnexion.setForeground(Color.GREEN);
 		
 		
@@ -75,34 +75,31 @@ public class Client extends JFrame implements ActionListener{
 		bouButton.setBounds(140,160,200,40);
 		bouButton.addActionListener(this);
 		
-		this.bouButton.setText("Alefa ilay requete");
+		this.bouButton.setText("Submit request");
 	}
 	public static void main(String[] args) throws Exception {
 		Client fen=new Client();
 		
-		
-		
 		final Scanner scan=new Scanner(System.in);
 	try {
-		s=new Socket("localhost", 1234);
+		s=new Socket(args[0], 1234);
 		//Maka sary
-		InputStream inputStream = s.getInputStream();
-        byte[] sizeAr = new byte[4];
-        inputStream.read(sizeAr);
-        int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
+		//InputStream inputStream = s.getInputStream();
+        //byte[] sizeAr = new byte[4];
+        //inputStream.read(sizeAr);
+        //int size = ByteBuffer.wrap(sizeAr).asIntBuffer().get();
 
-        byte[] imageAr = new byte[size];
-        inputStream.read(imageAr);
+        //byte[] imageAr = new byte[size];
+        //inputStream.read(imageAr);
 
-        BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
+        //BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
 
-        ImageIO.write(image, "jpg", new File("D://sgbd/fond.jpg"));
-       fen.jlab.setIcon(new ImageIcon("D://sgdb/fond.jpg"));
+        //ImageIO.write(image, "jpg", new File("D://sgbd/fond.jpg"));
+       	//fen.jlab.setIcon(new ImageIcon("D://sgbd/fond.jpg"));
 		
 		BufferedReader in=new BufferedReader(new InputStreamReader(s.getInputStream()));
 		PrintWriter out=new PrintWriter(s.getOutputStream());
 		Thread envoi=new Thread(new Runnable() {
-			String message;
 			public void run() {
 				while (true) {
 					
@@ -124,14 +121,13 @@ public class Client extends JFrame implements ActionListener{
 					
 					while (in!=null) {
 						msg=in.readLine();
-						System.out.println("Server  :"+msg);
+						System.out.println("Server  : "+msg);
 						JOptionPane.showMessageDialog(fen.anatiny,msg);
 						fen.anatiny.setText(msg);
 						if (msg=="") {
-							throw new Exception("Misy diso ny syntaxe anao");
+							throw new Exception("Erreur de syntaxe");
 						}
 					}
-					in.close();
 					s.close();
 					
 				} catch (Exception e) {
@@ -141,6 +137,7 @@ public class Client extends JFrame implements ActionListener{
 			}
 		});
 		recevoir.start();
+
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
@@ -156,17 +153,17 @@ public class Client extends JFrame implements ActionListener{
 				
 				out = new PrintWriter(s.getOutputStream());
 				String valiny=textfield.getText();
-				
+				textfield.setText(null);
+				textfield.grabFocus();
+
 				out.println(valiny);
-				
+			
 				out.flush();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			this.textfield.setText("");
-			this.textfield.grabFocus();
 		}
 		
 	}

@@ -267,10 +267,10 @@ public class Database {
 			
 		} catch (Exception e) {
 			if (e instanceof FileNotFoundException) {
-				return "Mety tsy miexiste ilay table nao na tsy ao anatin'ilay database tokony ho izy enao";
+				return "Table tsy misy ou database non correspondant";
 				
 			}
-			return "Misy olana eo aminy syntaxe anao";
+			return "Erreur de syntaxe";
 			
 		}
 		
@@ -320,7 +320,7 @@ public class Database {
 				}
 				
 				if (indtabdesmodifiers.size()<rehefatab.length) {
-					return "Tsy miexiste le ligne kasainao ataono condition";
+					return "Ligne referencee invalide";
 				}
 				ArrayList<Integer> indicenalignehomodifiena=new ArrayList<>();
 				
@@ -356,7 +356,7 @@ public class Database {
 					bfwr.close();
 					reader.close();
 					readerdonne.close();
-					return "Tsisy donnees ho deletena na tsy mifanaraka amin'ilay conditions";
+					return "Aucune ligne a supprimer";
 				}
 				for (int i = 0; i < tabdonne2d.size(); i++) {
 					int occurence=0;
@@ -380,9 +380,9 @@ public class Database {
 				write.close();
 		} catch (Exception e) {
 			if (e instanceof FileNotFoundException) {
-				return "Tsy misy ny tableanao na tsy ao amin'ilay base de donnees tokony hisy anao enao";
+				return "Database non correspondant ou table inexistant";
 			}
-			return "misy olana ny syntaxe anao";
+			return "Erreur de syntaxe";
 			
 		}
 		finally {
@@ -390,7 +390,7 @@ public class Database {
 			bfwr.close();
 			reader.close();
 			readerdonne.close();
-			valeurretour = "Tontosa ny requete-nao";
+			valeurretour = "Requete reussie";
 		}
 		return valeurretour;	
 	}
@@ -451,10 +451,10 @@ public class Database {
 				itewhere++;
 			}
 			if (indtabdesmodifiena.size()<donneeshovainatab.length) {
-				return "Tsy miexiste le ligne kasainao modifiena";
+				return "Aucune ligne correspondante";
 			}
 			if (indtabdesmodifiers.size()<rehefatab.length) {
-				return "Tsy miexiste le ligne kasainao ataono condition";
+				return "Aucune ligne correspondante";
 			}
 			ArrayList<Integer> indicenalignehomodifiena=new ArrayList<>();
 			
@@ -512,12 +512,12 @@ public class Database {
 			System.out.println(e.getMessage());
 			System.out.println(e.getCause());
 			if (e instanceof FileNotFoundException) {
-				return "table inexistant ou ou vous n'ete pas dans une base de donnee";
+				return "table inexistant ou vous n'ete pas dans une base de donnee";
 				
 			}
 			return e.getMessage();
 		}
-		return "Nety";
+		return "Update success";
 		
 		
 	}
@@ -571,7 +571,7 @@ public class Database {
 			write.close();
 			reader.close();
 			
-			return "Tafiditra tsara ny donnees anao";
+			return "Insertion reussie";
 		} catch (Exception e) {
 			return e.getMessage();
 		} finally {
